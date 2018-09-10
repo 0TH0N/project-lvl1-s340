@@ -1,0 +1,25 @@
+{
+  "name": "braingames",
+  "version": "1.0.0",
+  "description": "hexlet project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0TH0N/project-lvl1-s340.git"
+  },
+  "keywords": [
+    "hexlet",
+    "brain",
+    "game",
+    "learning"
+  ],
+  "author": "0TH0N",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0TH0N/project-lvl1-s340/issues"
+  },
+  "homepage": "https://github.com/0TH0N/project-lvl1-s340#readme"
+}
