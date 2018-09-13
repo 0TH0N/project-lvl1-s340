@@ -1,24 +1,35 @@
 {
   "name": "braingames0th0n3",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "hexlet learning project",
   "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^9.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
-    "readline-sync": "*"
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-babel": "^5.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "readline-sync": "^1.4.9"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
-    "babel-node": "babel-node"
+    "babel-node": "babel-node",
+    "eslint": "eslint --ignore-path .gitignore ."
   },
   "repository": {
     "type": "git",
