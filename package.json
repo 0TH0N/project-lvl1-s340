@@ -1,10 +1,11 @@
 {
   "name": "braingames0th0n3",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "description": "hexlet learning project",
   "main": "index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "files": [
     "dist"
