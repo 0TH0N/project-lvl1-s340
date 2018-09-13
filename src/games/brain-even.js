@@ -1,37 +1,15 @@
-import {
-  qName, questionAndAnswer, failMessage, successfulMessage, finalSuccessfulMessage,
-} from '..';
+import { random100, game } from '..';
+import { cons } from 'hexlet-pairs';
 
 export default () => {
-  console.log('Welcome to Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
-  const name = qName();
-  let isCorrectAnswer = true;
-  let counter = 0;
-  const maxCounter = 3;
-
-  while ((isCorrectAnswer) && (counter < maxCounter)) {
-    const number = Math.round(Math.random() * 100);
-    const answer = questionAndAnswer(number);
+  const func = () => {
+    const number = random100();
     const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
+    const expression = number;
+    return cons(expression, correctAnswer);
+  };
 
-    if (number % 2 === 0) {
-      if (answer === 'yes') {
-        isCorrectAnswer = true;
-        successfulMessage();
-      } else {
-        isCorrectAnswer = false;
-        failMessage(answer, correctAnswer, name);
-      }
-    } else if (answer === 'no') {
-      isCorrectAnswer = true;
-      successfulMessage();
-    } else {
-      isCorrectAnswer = false;
-      failMessage(answer, correctAnswer, name);
-    }
-
-    counter += 1;
-  }
-
-  if (isCorrectAnswer) finalSuccessfulMessage(name);
+  console.log('Welcome to Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
+  game(func);
+  return null;
 };

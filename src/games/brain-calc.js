@@ -1,47 +1,40 @@
-import {
-  qName, questionAndAnswer, failMessage, successfulMessage, finalSuccessfulMessage,
-} from '..';
+import { random100, game } from '..';
+import { cons } from 'hexlet-pairs';
+
 
 export default () => {
-  console.log('Welcome to Brain Games!\nWhat is the result of the expression?');
-  const name = qName();
-  let isCorrectAnswer = true;
-  let counter = 0;
-  const maxCounter = 3;
+  const func = () => {
+    const number1 = random100();
+    const number2 = random100();
+    const forOperation = Math.ceil(Math.random() * 3);
+    let result;
+    let str;
 
-  while ((isCorrectAnswer) && (counter < maxCounter)) {
-    const number1 = Math.round(Math.random() * 100);
-    const number2 = Math.round(Math.random() * 100);
-    const forOperation = Math.random() * 300;
-    const operation = forOperation < 100 ? '+' : (forOperation < 200 ? '-' : '*');
-    let result = 0;
-    switch (operation) {
-      case '+': {
+    switch (forOperation) {
+      case 1: {
         result = number1 + number2;
+        str = `${number1} + ${number2}`;
         break;
       }
 
-      case '-': {
+      case 2: {
         result = number1 - number2;
+        str = `${number1} - ${number2}`;
         break;
       }
 
-      default: result = number1 * number2;
+      default: {
+        result = number1 * number2;
+        str = `${number1} * ${number2}`;
+      }
     }
 
-    const expression = `${number1} ${operation} ${number2}`;
-    const answer = Number(questionAndAnswer(expression));
+    const correctAnswer = String(result);
+    const expression = str;
+    return cons(expression, correctAnswer);
+  };
 
-    if ((typeof (answer) === 'number') && (answer === result)) {
-      isCorrectAnswer = true;
-      successfulMessage();
-    } else {
-      isCorrectAnswer = false;
-      failMessage(answer, result, name);
-    }
-
-    counter += 1;
-  }
-
-  if (isCorrectAnswer) finalSuccessfulMessage(name);
+  console.log('Welcome to Brain Games!\nWhat is the result of the expression?');
+  game(func);
+  return null;
 };
