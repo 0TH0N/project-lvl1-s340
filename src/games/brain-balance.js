@@ -1,4 +1,4 @@
-import { game } from '..';
+import { welcomeMessage, game } from '..';
 import { cons } from 'hexlet-pairs';
 
 export default () => {
@@ -67,7 +67,8 @@ export default () => {
     return cons(expression, correctAnswer);
   };
 
-  console.log('Welcome to Brain Games!\nBalance the given number.');
+  welcomeMessage();
+  console.log('Balance the given number.');
   game(func);
   return null;
 };

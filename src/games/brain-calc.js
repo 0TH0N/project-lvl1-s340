@@ -1,4 +1,4 @@
-import { random100, game } from '..';
+import { welcomeMessage, random100, game } from '..';
 import { cons } from 'hexlet-pairs';
 
 
@@ -34,7 +34,8 @@ export default () => {
     return cons(expression, correctAnswer);
   };
 
-  console.log('Welcome to Brain Games!\nWhat is the result of the expression?');
+  welcomeMessage();
+  console.log('What is the result of the expression?');
   game(func);
   return null;
 };

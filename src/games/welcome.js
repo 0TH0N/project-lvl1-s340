@@ -1,6 +1,6 @@
-import { qName } from '..';
+import { welcomeMessage, qName } from '..';
 
 export default () => {
-  console.log('Welcome to the Brain Games!');
+  welcomeMessage();
   qName();
 };

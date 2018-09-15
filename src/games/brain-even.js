@@ -1,4 +1,4 @@
-import { random100, game } from '..';
+import { welcomeMessage, random100, game } from '..';
 import { cons } from 'hexlet-pairs';
 
 export default () => {
@@ -9,7 +9,8 @@ export default () => {
     return cons(expression, correctAnswer);
   };
 
-  console.log('Welcome to Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
+  welcomeMessage();
+  console.log('Answer "yes" if number even otherwise answer "no".');
   game(func);
   return null;
 };
