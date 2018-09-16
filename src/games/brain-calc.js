@@ -1,4 +1,4 @@
-import { welcomeMessage, random100, engineForGames } from '..';
+import { random100, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 
@@ -34,7 +34,6 @@ export default () => {
     return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage('What is the result of the expression?');
-  engineForGames(brainCalc);
+  engineForGames(brainCalc, 'What is the result of the expression?');
   return null;
 };

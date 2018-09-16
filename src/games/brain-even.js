@@ -1,4 +1,4 @@
-import { welcomeMessage, random100, engineForGames } from '..';
+import { random100, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 export default () => {
@@ -9,7 +9,6 @@ export default () => {
     return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage('Answer "yes" if number even otherwise answer "no".');
-  engineForGames(brainEven);
+  engineForGames(brainEven, 'Answer "yes" if number even otherwise answer "no".');
   return null;
 };

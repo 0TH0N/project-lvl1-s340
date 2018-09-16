@@ -1,4 +1,4 @@
-import { welcomeMessage, engineForGames } from '..';
+import { engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 export default () => {
@@ -66,7 +66,6 @@ export default () => {
     return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage('Balance the given number.');
-  engineForGames(brainBalance);
+  engineForGames(brainBalance, 'Balance the given number.');
   return null;
 };

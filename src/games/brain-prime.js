@@ -1,4 +1,4 @@
-import { welcomeMessage, random100, engineForGames } from '..';
+import { random100, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 
@@ -22,7 +22,6 @@ export default () => {
     return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage('Is this number prime?');
-  engineForGames(brainPrime);
+  engineForGames(brainPrime, 'Is this number prime?');
   return null;
 };

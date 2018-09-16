@@ -34,7 +34,8 @@ const successfulMessageForCurrentStep = () => {
 
 export const random100 = () => Math.round(Math.random() * 100);
 
-export const engineForGames = (runningGame) => {
+export const engineForGames = (runningGame, gameUniqueMessageForuser) => {
+  welcomeMessage(gameUniqueMessageForuser);
   const userName = askName();
   let isCorrectAnswer = true;
   let counter = 0;

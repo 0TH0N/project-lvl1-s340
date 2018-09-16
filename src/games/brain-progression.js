@@ -1,4 +1,4 @@
-import { welcomeMessage, random100, engineForGames } from '..';
+import { random100, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 
@@ -40,7 +40,6 @@ export default () => {
       hiddenNumberIndex, amountOfNumbers);
   };
 
-  welcomeMessage('What number is missing in this progression?');
-  engineForGames(brainProgression);
+  engineForGames(brainProgression, 'What number is missing in this progression?');
   return null;
 };
