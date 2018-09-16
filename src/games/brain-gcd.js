@@ -1,4 +1,4 @@
-import { welcomeMessage, random100, game } from '..';
+import { welcomeMessage, random100, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 const calcGcd = (num1, num2) => {
@@ -10,18 +10,17 @@ const calcGcd = (num1, num2) => {
 };
 
 export default () => {
-  const func = () => {
+  const brainGcd = () => {
     const number1 = random100();
     const number2 = random100();
     const gcd = calcGcd(number1, number2);
 
     const correctAnswer = String(gcd);
-    const expression = `${number1} ${number2}`;
-    return cons(expression, correctAnswer);
+    const expressionForQuestion = `${number1} ${number2}`;
+    return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage();
-  console.log('Find the greatest common divisor of given numbers.');
-  game(func);
+  welcomeMessage('Find the greatest common divisor of given numbers.');
+  engineForGames(brainGcd);
   return null;
 };

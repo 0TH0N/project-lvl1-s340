@@ -1,28 +1,28 @@
-import { welcomeMessage, random100, game } from '..';
+import { welcomeMessage, random100, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 
-const prime = (number) => {
-  let divisor = 2;
-  while (Math.floor(number / divisor) > 1) {
-    divisor += 1;
-    if ((number % divisor) === 0) return false;
-  }
-  return true;
+const checkPrime = (number, divisor) => {
+  if ((number / 2) < divisor) return true;
+  if ((number % divisor) === 0) return false;
+  return checkPrime(number, divisor + 1);
 };
 
-export default () => {
-  const func = () => {
-    const number = random100();
-    const answer = prime(number);
 
-    const correctAnswer = answer ? 'yes' : 'no';
-    const expression = String(number);
-    return cons(expression, correctAnswer);
+const isPrime = number => checkPrime(number, 2);
+
+
+export default () => {
+  const brainPrime = () => {
+    const number = random100();
+    const booleanAnswer = isPrime(number);
+
+    const correctAnswer = booleanAnswer ? 'yes' : 'no';
+    const expressionForQuestion = String(number);
+    return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage();
-  console.log('Is this number prime?');
-  game(func);
+  welcomeMessage('Is this number prime?');
+  engineForGames(brainPrime);
   return null;
 };

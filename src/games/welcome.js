@@ -1,6 +1,6 @@
-import { welcomeMessage, qName } from '..';
+import { welcomeMessage, askName } from '..';
 
 export default () => {
-  welcomeMessage();
-  qName();
+  welcomeMessage('');
+  askName();
 };

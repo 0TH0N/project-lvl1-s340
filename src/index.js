@@ -1,59 +1,61 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from 'hexlet-pairs';
 
-export const welcomeMessage = () => console.log('Welcome to the Brain Games!');
-
-export const qName = () => {
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}`);
-  return name;
+export const welcomeMessage = (additionalMessage) => {
+  console.log(`Welcome to the Brain Games!\n${additionalMessage}`);
 };
 
-const failMessage = (answer, correctAnswer, name) => {
+export const askName = () => {
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}`);
+  return userName;
+};
+
+const failMessage = (answer, correctAnswer, userName) => {
   console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}"`);
-  console.log(`Let's try again, ${name}!`);
+  console.log(`Let's try again, ${userName}!`);
   return null;
 };
 
-const finalSuccessfulMessage = (name) => {
-  console.log(`Congratulations, ${name}!`);
+const finalSuccessfulMessage = (userName) => {
+  console.log(`Congratulations, ${userName}!`);
   return null;
 };
 
-const questionAndAnswer = (parametr) => {
+const viewQuestionAndTakingUserAnswer = (parametr) => {
   const result = readlineSync.question(`Question: ${parametr}\nYour answer: `);
   return result;
 };
 
-const successfulMessage = () => {
+const successfulMessageForCurrentStep = () => {
   console.log('Correct!');
   return null;
 };
 
 export const random100 = () => Math.round(Math.random() * 100);
 
-export const game = (func) => {
-  const name = qName();
+export const engineForGames = (runningGame) => {
+  const userName = askName();
   let isCorrectAnswer = true;
   let counter = 0;
   const maxCounter = 3;
 
   while ((isCorrectAnswer) && (counter < maxCounter)) {
-    const pair = func();
-    const expression = car(pair);
+    const pair = runningGame();
+    const questionExpression = car(pair);
     const correctAnswer = cdr(pair);
-    const answer = questionAndAnswer(expression);
+    const userAnswer = viewQuestionAndTakingUserAnswer(questionExpression);
 
-    if (answer === correctAnswer) {
-      successfulMessage();
+    if (userAnswer === correctAnswer) {
+      successfulMessageForCurrentStep();
     } else {
       isCorrectAnswer = false;
-      failMessage(answer, correctAnswer, name);
+      failMessage(userAnswer, correctAnswer, userName);
     }
 
     counter += 1;
   }
 
-  if (isCorrectAnswer) finalSuccessfulMessage(name);
+  if (isCorrectAnswer) finalSuccessfulMessage(userName);
   return null;
 };

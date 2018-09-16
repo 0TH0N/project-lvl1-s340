@@ -1,74 +1,72 @@
-import { welcomeMessage, game } from '..';
+import { welcomeMessage, engineForGames } from '..';
 import { cons } from 'hexlet-pairs';
 
 export default () => {
-  const func = () => {
+  const brainBalance = () => {
     const number = Math.round(Math.random() * 5000);
-    let strNumber = String(number);
+    let stringFormatNumber = String(number);
     let nextStep = true;
-    let min = 99;
-    let max = -1;
-    let minIndex = -1;
-    let maxIndex = -1;
+    let minDigitInNumber = 99;
+    let maxDigitInNumber = -1;
+    let minDigitIndex = -1;
+    let maxDigitIndex = -1;
 
     while (nextStep) {
-      nextStep = false;
-
-      for (let i = 0; i < strNumber.length; i += 1) {
-        if (Number(strNumber.charAt(i)) < min) {
-          min = Number(strNumber.charAt(i));
-          minIndex = i;
+      for (let i = 0; i < stringFormatNumber.length; i += 1) {
+        if (Number(stringFormatNumber.charAt(i)) < minDigitInNumber) {
+          minDigitInNumber = Number(stringFormatNumber.charAt(i));
+          minDigitIndex = i;
         }
 
-        if (Number(strNumber.charAt(i)) > max) {
-          max = Number(strNumber.charAt(i));
-          maxIndex = i;
+        if (Number(stringFormatNumber.charAt(i)) > maxDigitInNumber) {
+          maxDigitInNumber = Number(stringFormatNumber.charAt(i));
+          maxDigitIndex = i;
         }
       }
 
-      if ((max - min) > 1) {
-        nextStep = true;
-        const tempStrNumber = strNumber;
-        strNumber = '';
-        min += 1;
-        max -= 1;
+      if ((maxDigitInNumber - minDigitInNumber) > 1) {
+        const tempStrNumber = stringFormatNumber;
+        stringFormatNumber = '';
+        minDigitInNumber += 1;
+        maxDigitInNumber -= 1;
 
         for (let i = 0; i < tempStrNumber.length; i += 1) {
           switch (i) {
-            case minIndex: {
-              strNumber += String(min);
+            case minDigitIndex: {
+              stringFormatNumber += String(minDigitInNumber);
               break;
             }
 
-            case maxIndex: {
-              strNumber += String(max);
+            case maxDigitIndex: {
+              stringFormatNumber += String(maxDigitInNumber);
               break;
             }
 
             default: {
-              strNumber += tempStrNumber.charAt(i);
+              stringFormatNumber += tempStrNumber.charAt(i);
             }
           }
         }
       } else nextStep = false;
     }
 
-    let minCount = 0;
-    for (let i = 0; i < strNumber.length; i += 1) {
-      if (Number(strNumber.charAt(i)) === min) minCount += 1;
+    let countOfMinDigits = 0;
+    for (let i = 0; i < stringFormatNumber.length; i += 1) {
+      if (Number(stringFormatNumber.charAt(i)) === minDigitInNumber) countOfMinDigits += 1;
     }
-    const maxCount = strNumber.length - minCount;
-    strNumber = '';
-    for (let i = 0; i < minCount; i += 1) strNumber += String(min);
-    for (let i = minCount; i < (minCount + maxCount); i += 1) strNumber += String(max);
+    const lengthOfNumberString = stringFormatNumber.length;
+    stringFormatNumber = '';
+    for (let i = 0; i < countOfMinDigits; i += 1) stringFormatNumber += String(minDigitInNumber);
+    for (let i = countOfMinDigits; i < lengthOfNumberString; i += 1) {
+      stringFormatNumber += String(maxDigitInNumber);
+    }
 
-    const correctAnswer = strNumber;
-    const expression = String(number);
-    return cons(expression, correctAnswer);
+    const correctAnswer = stringFormatNumber;
+    const expressionForQuestion = String(number);
+    return cons(expressionForQuestion, correctAnswer);
   };
 
-  welcomeMessage();
-  console.log('Balance the given number.');
-  game(func);
+  welcomeMessage('Balance the given number.');
+  engineForGames(brainBalance);
   return null;
 };
